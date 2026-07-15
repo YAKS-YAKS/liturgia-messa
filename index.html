@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Ordinario della Messa</title>
+
+  <!-- ===== RÉGLAGES « APPLICATION » (PWA) ===== -->
+  <!-- La carte d'identité de l'app (nom, icônes, couleurs) -->
+  <link rel="manifest" href="manifest.json">
+  <!-- Couleur de la barre du navigateur -->
+  <meta name="theme-color" content="#a3122e">
+
+  <!-- ===== RÉGLAGES SPÉCIAUX APPLE (iPhone / iPad) ===== -->
+  <!-- Ouvre l'app en plein écran, sans la barre de Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Style de la barre d'état (heure, batterie) en haut -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <!-- Nom affiché sous l'icône sur l'écran d'accueil -->
+  <meta name="apple-mobile-web-app-title" content="Messa">
+  <!-- Icône sur l'écran d'accueil de l'iPhone -->
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== EN-TÊTE (header) ===== -->
+  <header class="entete">
+    <button id="btn-menu" title="Menu">☰</button>
+    <h1>✠ Ordinario della Messa</h1>
+    <div class="outils">
+      <button id="btn-moins" title="Diminuer la taille du texte">A−</button>
+      <button id="btn-plus" title="Augmenter la taille du texte">A+</button>
+      <button id="btn-nuit" title="Mode nuit">🌙</button>
+    </div>
+  </header>
+
+  <div class="conteneur">
+
+    <!-- ===== MENU LATÉRAL (navigation) ===== -->
+    <nav id="menu" class="menu">
+      <p class="menu-titre">Le parti della Messa</p>
+      <ul>
+        <li><button class="lien-nav actif" data-section="introduzione">1. Riti di Introduzione</button></li>
+        <li><button class="lien-nav" data-section="parola">2. Liturgia della Parola</button></li>
+        <li><button class="lien-nav" data-section="eucaristica">3. Liturgia Eucaristica</button></li>
+        <li><button class="lien-nav" data-section="comunione">4. Riti di Comunione</button></li>
+        <li><button class="lien-nav" data-section="conclusione">5. Riti di Conclusione</button></li>
+      </ul>
+      <p class="legende">
+        <span class="qui-s">S.</span> = Sacerdote (prêtre)<br>
+        <span class="qui-t">T.</span> = Tutti (l'assemblée)<br>
+        <span class="rubrica-mini">texte rouge</span> = rubrique (indication)
+      </p>
+    </nav>
+
+    <!-- ===== CONTENU PRINCIPAL ===== -->
+    <main id="contenu">
+
+      <!-- ============================================================ -->
+      <!-- 1. RITI DI INTRODUZIONE                                      -->
+      <!-- ============================================================ -->
+      <section id="introduzione" class="section visible">
+        <h2>Riti di Introduzione</h2>
+
+        <article>
+          <h3>Canto d'ingresso</h3>
+          <p class="rubrica">Il popolo si riunisce e il sacerdote con i ministri si reca all'altare, mentre si esegue il canto d'ingresso. Tutti stanno in piedi.</p>
+        </article>
+
+        <article>
+          <h3>Segno della croce</h3>
+          <p><span class="qui-s">S.</span> Nel nome del Padre e del Figlio e dello Spirito Santo.</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+        </article>
+
+        <article>
+          <h3>Saluto</h3>
+          <p><span class="qui-s">S.</span> La grazia del Signore nostro Gesù Cristo, l'amore di Dio Padre e la comunione dello Spirito Santo siano con tutti voi.</p>
+          <p class="rubrica">Oppure:</p>
+          <p><span class="qui-s">S.</span> Il Signore sia con voi.</p>
+          <p><span class="qui-t">T.</span> <strong>E con il tuo spirito.</strong></p>
+        </article>
+
+        <article>
+          <h3>Atto penitenziale</h3>
+          <p><span class="qui-s">S.</span> Fratelli e sorelle, per celebrare degnamente i santi misteri, riconosciamo i nostri peccati.</p>
+          <p class="rubrica">Breve pausa di silenzio. Poi tutti insieme:</p>
+          <p><span class="qui-t">T.</span> <strong>Confesso a Dio onnipotente e a voi, fratelli e sorelle, che ho molto peccato in pensieri, parole, opere e omissioni, per mia colpa, mia colpa, mia grandissima colpa. E supplico la beata sempre Vergine Maria, gli angeli, i santi e voi, fratelli e sorelle, di pregare per me il Signore Dio nostro.</strong></p>
+          <p><span class="qui-s">S.</span> Dio onnipotente abbia misericordia di noi, perdoni i nostri peccati e ci conduca alla vita eterna.</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+        </article>
+
+        <article>
+          <h3>Kyrie</h3>
+          <p><span class="qui-s">S.</span> Kýrie, eléison. <span class="qui-t">T.</span> <strong>Kýrie, eléison.</strong></p>
+          <p><span class="qui-s">S.</span> Christe, eléison. <span class="qui-t">T.</span> <strong>Christe, eléison.</strong></p>
+          <p><span class="qui-s">S.</span> Kýrie, eléison. <span class="qui-t">T.</span> <strong>Kýrie, eléison.</strong></p>
+          <p class="rubrica">Oppure:</p>
+          <p><span class="qui-s">S.</span> Signore, pietà. <span class="qui-t">T.</span> <strong>Signore, pietà.</strong></p>
+          <p><span class="qui-s">S.</span> Cristo, pietà. <span class="qui-t">T.</span> <strong>Cristo, pietà.</strong></p>
+          <p><span class="qui-s">S.</span> Signore, pietà. <span class="qui-t">T.</span> <strong>Signore, pietà.</strong></p>
+        </article>
+
+        <article>
+          <h3>Gloria</h3>
+          <p class="rubrica">Si dice o si canta nelle domeniche (fuori Avvento e Quaresima), nelle solennità e nelle feste.</p>
+          <p><span class="qui-t">T.</span> <strong>Gloria a Dio nell'alto dei cieli e pace in terra agli uomini, amati dal Signore. Noi ti lodiamo, ti benediciamo, ti adoriamo, ti glorifichiamo, ti rendiamo grazie per la tua gloria immensa, Signore Dio, Re del cielo, Dio Padre onnipotente. Signore, Figlio unigenito, Gesù Cristo, Signore Dio, Agnello di Dio, Figlio del Padre, tu che togli i peccati del mondo, abbi pietà di noi; tu che togli i peccati del mondo, accogli la nostra supplica; tu che siedi alla destra del Padre, abbi pietà di noi. Perché tu solo il Santo, tu solo il Signore, tu solo l'Altissimo, Gesù Cristo, con lo Spirito Santo: nella gloria di Dio Padre. Amen.</strong></p>
+        </article>
+
+        <article>
+          <h3>Colletta</h3>
+          <p><span class="qui-s">S.</span> Preghiamo.</p>
+          <p class="rubrica">Il sacerdote dice l'orazione colletta propria del giorno, che si conclude:</p>
+          <p><span class="qui-s">S.</span> ...per tutti i secoli dei secoli.</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+        </article>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 2. LITURGIA DELLA PAROLA                                     -->
+      <!-- ============================================================ -->
+      <section id="parola" class="section">
+        <h2>Liturgia della Parola</h2>
+
+        <article>
+          <h3>Prima Lettura</h3>
+          <p class="rubrica">Tutti si siedono. Il lettore proclama la prima lettura e alla fine dice:</p>
+          <p><span class="qui-s">L.</span> Parola di Dio.</p>
+          <p><span class="qui-t">T.</span> <strong>Rendiamo grazie a Dio.</strong></p>
+        </article>
+
+        <article>
+          <h3>Salmo responsoriale</h3>
+          <p class="rubrica">Il salmista canta o recita il salmo; il popolo ripete il ritornello.</p>
+        </article>
+
+        <article>
+          <h3>Seconda Lettura</h3>
+          <p class="rubrica">Nelle domeniche e nelle solennità. Alla fine:</p>
+          <p><span class="qui-s">L.</span> Parola di Dio.</p>
+          <p><span class="qui-t">T.</span> <strong>Rendiamo grazie a Dio.</strong></p>
+        </article>
+
+        <article>
+          <h3>Canto al Vangelo</h3>
+          <p class="rubrica">Tutti si alzano in piedi.</p>
+          <p><span class="qui-t">T.</span> <strong>Alleluia, alleluia.</strong> <span class="rubrica-inline">(In Quaresima: Lode a te, o Cristo, re di eterna gloria.)</span></p>
+        </article>
+
+        <article>
+          <h3>Vangelo</h3>
+          <p><span class="qui-s">S.</span> Il Signore sia con voi.</p>
+          <p><span class="qui-t">T.</span> <strong>E con il tuo spirito.</strong></p>
+          <p><span class="qui-s">S.</span> Dal Vangelo secondo N.</p>
+          <p><span class="qui-t">T.</span> <strong>Gloria a te, o Signore.</strong></p>
+          <p class="rubrica">Alla fine del Vangelo:</p>
+          <p><span class="qui-s">S.</span> Parola del Signore.</p>
+          <p><span class="qui-t">T.</span> <strong>Lode a te, o Cristo.</strong></p>
+        </article>
+
+        <article>
+          <h3>Omelia</h3>
+          <p class="rubrica">Tutti si siedono. Il sacerdote tiene l'omelia.</p>
+        </article>
+
+        <article>
+          <h3>Credo (Simbolo niceno-costantinopolitano)</h3>
+          <p class="rubrica">Tutti si alzano in piedi. Si dice nelle domeniche e nelle solennità.</p>
+          <p><span class="qui-t">T.</span> <strong>Credo in un solo Dio, Padre onnipotente, creatore del cielo e della terra, di tutte le cose visibili e invisibili. Credo in un solo Signore, Gesù Cristo, unigenito Figlio di Dio, nato dal Padre prima di tutti i secoli: Dio da Dio, Luce da Luce, Dio vero da Dio vero, generato, non creato, della stessa sostanza del Padre; per mezzo di lui tutte le cose sono state create. Per noi uomini e per la nostra salvezza discese dal cielo,</strong></p>
+          <p class="rubrica">Alle parole seguenti, fino a « si è fatto uomo », tutti si inchinano:</p>
+          <p><span class="qui-t">T.</span> <strong>e per opera dello Spirito Santo si è incarnato nel seno della Vergine Maria e si è fatto uomo. Fu crocifisso per noi sotto Ponzio Pilato, morì e fu sepolto. Il terzo giorno è risuscitato, secondo le Scritture, è salito al cielo, siede alla destra del Padre. E di nuovo verrà, nella gloria, per giudicare i vivi e i morti, e il suo regno non avrà fine. Credo nello Spirito Santo, che è Signore e dà la vita, e procede dal Padre e dal Figlio. Con il Padre e il Figlio è adorato e glorificato, e ha parlato per mezzo dei profeti. Credo la Chiesa, una, santa, cattolica e apostolica. Professo un solo battesimo per il perdono dei peccati. Aspetto la risurrezione dei morti e la vita del mondo che verrà. Amen.</strong></p>
+        </article>
+
+        <article>
+          <h3>Credo (Simbolo degli Apostoli)</h3>
+          <p class="rubrica">In alternativa, specialmente in Quaresima e nel Tempo di Pasqua:</p>
+          <p><span class="qui-t">T.</span> <strong>Io credo in Dio, Padre onnipotente, creatore del cielo e della terra; e in Gesù Cristo, suo unico Figlio, nostro Signore, il quale fu concepito di Spirito Santo, nacque da Maria Vergine, patì sotto Ponzio Pilato, fu crocifisso, morì e fu sepolto; discese agli inferi; il terzo giorno risuscitò da morte; salì al cielo, siede alla destra di Dio Padre onnipotente; di là verrà a giudicare i vivi e i morti. Credo nello Spirito Santo, la santa Chiesa cattolica, la comunione dei santi, la remissione dei peccati, la risurrezione della carne, la vita eterna. Amen.</strong></p>
+        </article>
+
+        <article>
+          <h3>Preghiera dei fedeli (Preghiera universale)</h3>
+          <p class="rubrica">Il lettore propone le intenzioni; il popolo risponde, per esempio:</p>
+          <p><span class="qui-t">T.</span> <strong>Ascoltaci, o Signore.</strong></p>
+        </article>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 3. LITURGIA EUCARISTICA                                      -->
+      <!-- ============================================================ -->
+      <section id="eucaristica" class="section">
+        <h2>Liturgia Eucaristica</h2>
+
+        <article>
+          <h3>Presentazione dei doni</h3>
+          <p class="rubrica">Tutti si siedono. Il sacerdote, all'altare, prende il pane:</p>
+          <p><span class="qui-s">S.</span> Benedetto sei tu, Signore, Dio dell'universo: dalla tua bontà abbiamo ricevuto questo pane, frutto della terra e del lavoro dell'uomo; lo presentiamo a te, perché diventi per noi cibo di vita eterna.</p>
+          <p><span class="qui-t">T.</span> <strong>Benedetto nei secoli il Signore.</strong></p>
+          <p class="rubrica">Poi prende il calice:</p>
+          <p><span class="qui-s">S.</span> Benedetto sei tu, Signore, Dio dell'universo: dalla tua bontà abbiamo ricevuto questo vino, frutto della vite e del lavoro dell'uomo; lo presentiamo a te, perché diventi per noi bevanda di salvezza.</p>
+          <p><span class="qui-t">T.</span> <strong>Benedetto nei secoli il Signore.</strong></p>
+        </article>
+
+        <article>
+          <h3>Orazione sulle offerte</h3>
+          <p><span class="qui-s">S.</span> Pregate, fratelli e sorelle, perché il mio e vostro sacrificio sia gradito a Dio, Padre onnipotente.</p>
+          <p><span class="qui-t">T.</span> <strong>Il Signore riceva dalle tue mani questo sacrificio a lode e gloria del suo nome, per il bene nostro e di tutta la sua santa Chiesa.</strong></p>
+          <p class="rubrica">Il sacerdote dice l'orazione sulle offerte, che si conclude:</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+        </article>
+
+        <article>
+          <h3>Prefazio (dialogo)</h3>
+          <p class="rubrica">Tutti si alzano in piedi.</p>
+          <p><span class="qui-s">S.</span> Il Signore sia con voi.</p>
+          <p><span class="qui-t">T.</span> <strong>E con il tuo spirito.</strong></p>
+          <p><span class="qui-s">S.</span> In alto i nostri cuori.</p>
+          <p><span class="qui-t">T.</span> <strong>Sono rivolti al Signore.</strong></p>
+          <p><span class="qui-s">S.</span> Rendiamo grazie al Signore, nostro Dio.</p>
+          <p><span class="qui-t">T.</span> <strong>È cosa buona e giusta.</strong></p>
+          <p class="rubrica">Il sacerdote canta o dice il prefazio proprio.</p>
+        </article>
+
+        <article>
+          <h3>Santo (Sanctus)</h3>
+          <p><span class="qui-t">T.</span> <strong>Santo, Santo, Santo il Signore Dio dell'universo. I cieli e la terra sono pieni della tua gloria. Osanna nell'alto dei cieli. Benedetto colui che viene nel nome del Signore. Osanna nell'alto dei cieli.</strong></p>
+          <p class="rubrica">Tutti si inginocchiano per la Preghiera eucaristica.</p>
+        </article>
+
+        <article>
+          <h3>Preghiera Eucaristica II</h3>
+          <p class="rubrica">Una delle Preghiere eucaristiche del Messale. Qui, come esempio, la Preghiera eucaristica II:</p>
+          <p><span class="qui-s">S.</span> Veramente santo sei tu, o Padre, fonte di ogni santità. Ti preghiamo: santifica questi doni con la rugiada del tuo Spirito, perché diventino per noi il Corpo e ✠ il Sangue del Signore nostro Gesù Cristo.</p>
+          <p><span class="qui-s">S.</span> Egli, consegnandosi volontariamente alla passione, prese il pane, rese grazie, lo spezzò, lo diede ai suoi discepoli e disse: <em>Prendete, e mangiatene tutti: questo è il mio Corpo offerto in sacrificio per voi.</em></p>
+          <p><span class="qui-s">S.</span> Allo stesso modo, dopo aver cenato, prese il calice, di nuovo rese grazie, lo diede ai suoi discepoli e disse: <em>Prendete, e bevetene tutti: questo è il calice del mio Sangue, per la nuova ed eterna alleanza, versato per voi e per tutti in remissione dei peccati. Fate questo in memoria di me.</em></p>
+        </article>
+
+        <article>
+          <h3>Mistero della fede</h3>
+          <p><span class="qui-s">S.</span> Mistero della fede.</p>
+          <p><span class="qui-t">T.</span> <strong>Annunciamo la tua morte, Signore, proclamiamo la tua risurrezione, nell'attesa della tua venuta.</strong></p>
+          <p class="rubrica">La Preghiera eucaristica continua con la memoria, l'intercessione per la Chiesa, i vivi e i defunti.</p>
+        </article>
+
+        <article>
+          <h3>Dossologia</h3>
+          <p><span class="qui-s">S.</span> Per Cristo, con Cristo e in Cristo, a te, Dio Padre onnipotente, nell'unità dello Spirito Santo, ogni onore e gloria per tutti i secoli dei secoli.</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+        </article>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 4. RITI DI COMUNIONE                                         -->
+      <!-- ============================================================ -->
+      <section id="comunione" class="section">
+        <h2>Riti di Comunione</h2>
+
+        <article>
+          <h3>Padre Nostro</h3>
+          <p class="rubrica">Tutti in piedi.</p>
+          <p><span class="qui-s">S.</span> Obbedienti alla parola del Salvatore e formati al suo divino insegnamento, osiamo dire:</p>
+          <p><span class="qui-t">T.</span> <strong>Padre nostro che sei nei cieli, sia santificato il tuo nome, venga il tuo regno, sia fatta la tua volontà, come in cielo così in terra. Dacci oggi il nostro pane quotidiano, e rimetti a noi i nostri debiti come anche noi li rimettiamo ai nostri debitori, e non abbandonarci alla tentazione, ma liberaci dal male.</strong></p>
+          <p class="rubrica">Il sacerdote continua:</p>
+          <p><span class="qui-s">S.</span> Liberaci, o Signore, da tutti i mali, concedi la pace ai nostri giorni, e con l'aiuto della tua misericordia vivremo sempre liberi dal peccato e sicuri da ogni turbamento, nell'attesa che si compia la beata speranza e venga il nostro Salvatore Gesù Cristo.</p>
+          <p><span class="qui-t">T.</span> <strong>Tuo è il regno, tua la potenza e la gloria nei secoli.</strong></p>
+        </article>
+
+        <article>
+          <h3>Rito della pace</h3>
+          <p><span class="qui-s">S.</span> Signore Gesù Cristo, che hai detto ai tuoi apostoli: «Vi lascio la pace, vi do la mia pace», non guardare ai nostri peccati, ma alla fede della tua Chiesa, e donale unità e pace secondo la tua volontà. Tu che vivi e regni nei secoli dei secoli.</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+          <p><span class="qui-s">S.</span> La pace del Signore sia sempre con voi.</p>
+          <p><span class="qui-t">T.</span> <strong>E con il tuo spirito.</strong></p>
+          <p><span class="qui-s">S.</span> Scambiatevi il dono della pace.</p>
+          <p class="rubrica">Tutti si scambiano un segno di pace.</p>
+        </article>
+
+        <article>
+          <h3>Agnello di Dio (Agnus Dei)</h3>
+          <p><span class="qui-t">T.</span> <strong>Agnello di Dio, che togli i peccati del mondo, abbi pietà di noi.<br>
+          Agnello di Dio, che togli i peccati del mondo, abbi pietà di noi.<br>
+          Agnello di Dio, che togli i peccati del mondo, dona a noi la pace.</strong></p>
+        </article>
+
+        <article>
+          <h3>Comunione</h3>
+          <p><span class="qui-s">S.</span> Ecco l'Agnello di Dio, ecco colui che toglie i peccati del mondo. Beati gli invitati alla cena dell'Agnello.</p>
+          <p><span class="qui-t">T.</span> <strong>O Signore, non sono degno di partecipare alla tua mensa: ma di' soltanto una parola e io sarò salvato.</strong></p>
+          <p class="rubrica">Chi riceve la comunione:</p>
+          <p><span class="qui-s">S.</span> Il Corpo di Cristo.</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+        </article>
+
+        <article>
+          <h3>Orazione dopo la comunione</h3>
+          <p><span class="qui-s">S.</span> Preghiamo.</p>
+          <p class="rubrica">Il sacerdote dice l'orazione dopo la comunione, che si conclude:</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+        </article>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- 5. RITI DI CONCLUSIONE                                       -->
+      <!-- ============================================================ -->
+      <section id="conclusione" class="section">
+        <h2>Riti di Conclusione</h2>
+
+        <article>
+          <h3>Benedizione</h3>
+          <p><span class="qui-s">S.</span> Il Signore sia con voi.</p>
+          <p><span class="qui-t">T.</span> <strong>E con il tuo spirito.</strong></p>
+          <p><span class="qui-s">S.</span> Vi benedica Dio onnipotente, Padre e Figlio ✠ e Spirito Santo.</p>
+          <p><span class="qui-t">T.</span> <strong>Amen.</strong></p>
+        </article>
+
+        <article>
+          <h3>Congedo</h3>
+          <p><span class="qui-s">S.</span> Andate in pace.</p>
+          <p class="rubrica">Oppure: «La messa è finita: andate in pace», «Andate e annunciate il Vangelo del Signore», «La gioia del Signore sia la vostra forza: andate in pace».</p>
+          <p><span class="qui-t">T.</span> <strong>Rendiamo grazie a Dio.</strong></p>
+        </article>
+      </section>
+
+      <!-- Boutons Précédent / Suivant -->
+      <div class="navigation-bas">
+        <button id="btn-precedente">← Precedente</button>
+        <button id="btn-successivo">Successivo →</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

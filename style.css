@@ -1,0 +1,289 @@
+/* ============================================================
+   STYLE DE L'APPLICATION « Ordinario della Messa »
+   Les variables CSS (--nom) permettent de changer les couleurs
+   facilement, notamment pour le mode nuit.
+   ============================================================ */
+
+:root {
+  --fond: #faf7f2;           /* couleur de fond générale (crème) */
+  --fond-carte: #ffffff;     /* fond des blocs de texte */
+  --texte: #2b2721;          /* couleur du texte principal */
+  --rouge: #a3122e;          /* rouge liturgique (rubriques, prêtre) */
+  --or: #b8860b;             /* doré pour les titres */
+  --bordure: #e5ddd0;
+  --rouge-entete: #a3122e;   /* fond du bandeau du haut */
+  --taille-texte: 18px;      /* taille de base, modifiée par A− / A+ */
+}
+
+/* Mode nuit : quand <body> a la classe "nuit", on change les variables */
+body.nuit {
+  --fond: #1c1a17;
+  --rouge-entete: #5a1020;   /* bandeau plus sombre en mode nuit */
+  --fond-carte: #262320;
+  --texte: #e8e2d8;
+  --rouge: #e06c7d;
+  --or: #d4a94a;
+  --bordure: #3a362f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--fond);
+  color: var(--texte);
+  font-size: var(--taille-texte);
+  line-height: 1.7;
+}
+
+/* ===== EN-TÊTE ===== */
+.entete {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  /* Respecte l'encoche et les bords arrondis de l'iPhone */
+  padding-top: calc(10px + env(safe-area-inset-top));
+  padding-left: calc(16px + env(safe-area-inset-left));
+  padding-right: calc(16px + env(safe-area-inset-right));
+  background: var(--rouge-entete);
+  color: #fff;
+  z-index: 10;
+}
+
+.entete h1 {
+  font-size: 1.15em;
+  flex: 1;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+
+.entete button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.entete button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== DISPOSITION : menu à gauche + contenu à droite ===== */
+.conteneur {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== MENU LATÉRAL ===== */
+.menu {
+  width: 260px;
+  flex-shrink: 0;
+  padding: 24px 16px;
+  border-right: 1px solid var(--bordure);
+  position: sticky;
+  top: 56px;
+  align-self: flex-start;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+
+.menu-titre {
+  font-variant: small-caps;
+  color: var(--or);
+  margin-bottom: 10px;
+  font-size: 0.95em;
+}
+
+.menu ul {
+  list-style: none;
+}
+
+.lien-nav {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  color: var(--texte);
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.92em;
+}
+
+.lien-nav:hover {
+  background: var(--bordure);
+}
+
+/* Le lien de la section actuellement affichée */
+.lien-nav.actif {
+  background: var(--rouge-entete);
+  color: #fff;
+}
+
+.legende {
+  margin-top: 24px;
+  font-size: 0.78em;
+  color: var(--texte);
+  opacity: 0.8;
+  border-top: 1px solid var(--bordure);
+  padding-top: 12px;
+}
+
+.rubrica-mini {
+  color: var(--rouge);
+  font-style: italic;
+}
+
+/* ===== CONTENU PRINCIPAL ===== */
+main {
+  flex: 1;
+  padding: 32px 40px 60px;
+  min-width: 0;
+}
+
+/* Chaque grande partie de la messe est cachée par défaut... */
+.section {
+  display: none;
+}
+
+/* ...et seule la section avec la classe "visible" est affichée */
+.section.visible {
+  display: block;
+  animation: apparition 0.3s ease;
+}
+
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  color: var(--or);
+  font-variant: small-caps;
+  font-weight: normal;
+  font-size: 1.7em;
+  text-align: center;
+  margin-bottom: 8px;
+  border-bottom: 2px solid var(--or);
+  padding-bottom: 10px;
+}
+
+article {
+  background: var(--fond-carte);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-top: 20px;
+}
+
+h3 {
+  color: var(--rouge);
+  font-variant: small-caps;
+  font-weight: normal;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+article p {
+  margin-bottom: 10px;
+}
+
+/* Étiquettes « qui parle » : S. = sacerdote, T. = tutti, L. = lettore */
+.qui-s, .qui-t {
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.qui-s {
+  color: var(--rouge);
+}
+
+.qui-t {
+  color: var(--or);
+}
+
+/* Rubriques : les indications en rouge et italique, comme dans le missel */
+.rubrica {
+  color: var(--rouge);
+  font-style: italic;
+  font-size: 0.88em;
+}
+
+.rubrica-inline {
+  color: var(--rouge);
+  font-style: italic;
+  font-size: 0.88em;
+}
+
+/* ===== BOUTONS PRÉCÉDENT / SUIVANT ===== */
+.navigation-bas {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.navigation-bas button {
+  font: inherit;
+  padding: 10px 20px;
+  border: 1px solid var(--rouge);
+  color: var(--rouge);
+  background: var(--fond-carte);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.navigation-bas button:hover:not(:disabled) {
+  background: var(--rouge);
+  color: #fff;
+}
+
+.navigation-bas button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ===== ÉCRANS ÉTROITS (téléphone) ===== */
+@media (max-width: 720px) {
+  /* Titre plus petit, sur une seule ligne, pour que le bandeau
+     garde toujours la même hauteur (48px) */
+  .entete h1 {
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .menu {
+    position: fixed;
+    left: 0;
+    top: 48px;
+    height: calc(100vh - 48px);
+    background: var(--fond);
+    transform: translateX(-100%);   /* menu caché hors de l'écran */
+    transition: transform 0.25s ease;
+    z-index: 9;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Le bouton ☰ ajoute la classe "ouvert" pour faire glisser le menu */
+  .menu.ouvert {
+    transform: translateX(0);
+  }
+
+  main {
+    padding: 20px 16px 50px;
+  }
+}
