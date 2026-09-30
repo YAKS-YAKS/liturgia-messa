@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+  <Id>a22b361f-41dd-4fe7-adc8-663fdd109569</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Yaks</ProviderName>
+  <DefaultLocale>fr-FR</DefaultLocale>
+  <DisplayName DefaultValue="Sources franciscaines"/>
+  <Description DefaultValue="Textes latins, analyses comparées et index des sources franciscaines, dans un volet de Word."/>
+  <IconUrl DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/word-addin/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/word-addin/icon-80.png"/>
+  <SupportUrl DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/"/>
+  <AppDomains>
+    <AppDomain>https://ecole-franciscaine-de-paris.fr</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/index.html?word=1"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Desc"/>
+            <LearnMoreUrl resid="Url.Home"/>
+          </GetStarted>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="SF.Group">
+                <Label resid="Group.Label"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16"/>
+                  <bt:Image size="32" resid="Icon.32"/>
+                  <bt:Image size="80" resid="Icon.80"/>
+                </Icon>
+                <Control xsi:type="Button" id="SF.OpenPane">
+                  <Label resid="Button.Label"/>
+                  <Supertip>
+                    <Title resid="Button.Label"/>
+                    <Description resid="Button.Tip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16"/>
+                    <bt:Image size="32" resid="Icon.32"/>
+                    <bt:Image size="80" resid="Icon.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>SFPane</TaskpaneId>
+                    <SourceLocation resid="Url.Pane"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/word-addin/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/word-addin/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/word-addin/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Url.Pane" DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/index.html?word=1"/>
+        <bt:Url id="Url.Home" DefaultValue="https://yaks-yaks.github.io/liturgia-messa/sources-franciscaines/"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Group.Label" DefaultValue="Sources franciscaines"/>
+        <bt:String id="Button.Label" DefaultValue="Sources fr."/>
+        <bt:String id="GetStarted.Title" DefaultValue="Sources franciscaines"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="Button.Tip" DefaultValue="Ouvre les textes latins, analyses et index dans un volet."/>
+        <bt:String id="GetStarted.Desc" DefaultValue="Cliquez sur « Sources fr. » dans l'onglet Accueil."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

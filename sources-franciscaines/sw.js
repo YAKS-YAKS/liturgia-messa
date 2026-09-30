@@ -1,5 +1,5 @@
 // Cache pour un usage hors ligne. Changer la version pour forcer la mise à jour.
-const NOM_CACHE = "sources-franciscaines-v1";
+const NOM_CACHE = "sources-franciscaines-v2";
 const FICHIERS = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
