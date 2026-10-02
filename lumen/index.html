@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lumen · Magistère</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1d2b4f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lumen">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button id="home" class="brand" aria-label="Accueil">Lumen</button>
+    <input id="q" class="search" type="search" placeholder="Rechercher dans tous les textes…" aria-label="Recherche" autocomplete="off">
+    <button id="open-set" class="ghost" aria-label="Réglages IA">⚙︎ IA</button>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<aside id="ia" class="ia" hidden aria-live="polite">
+  <div class="ia-head">
+    <strong id="ia-title">Analyse</strong>
+    <button id="ia-close" class="ghost" aria-label="Fermer">✕</button>
+  </div>
+  <blockquote id="ia-quote"></blockquote>
+  <div class="modes" id="ia-modes"></div>
+  <textarea id="ia-q" rows="2" placeholder="Question ou angle précis (facultatif)"></textarea>
+  <button id="ia-go" class="primary">Lancer</button>
+  <div id="ia-out" class="ia-out"></div>
+</aside>
+
+<dialog id="set">
+  <form method="dialog">
+    <h2>Réglages de l'IA</h2>
+    <p class="muted">La clé reste uniquement dans ce navigateur (stockage local). Elle est envoyée directement au fournisseur choisi, jamais ailleurs.</p>
+    <label>Fournisseur
+      <select id="s-prov">
+        <option value="anthropic">Anthropic (Claude)</option>
+        <option value="deepseek">DeepSeek</option>
+        <option value="openai">Compatible OpenAI (URL personnalisée)</option>
+      </select>
+    </label>
+    <label>Clé API <input id="s-key" type="password" autocomplete="off"></label>
+    <label>Modèle <input id="s-model" type="text" autocomplete="off"></label>
+    <label id="s-url-l">URL de base <input id="s-url" type="url" placeholder="https://…/v1"></label>
+    <div class="row"><button value="cancel" class="ghost">Annuler</button><button id="s-save" value="ok" class="primary">Enregistrer</button></div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
